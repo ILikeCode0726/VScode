@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .can {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @media all and (max-width:480px) and (min-width: 321px) {
+            .can {
+                position: absolute;
+                top: 50px;
+                left: 55%;
+            }
+        }
+        @media all and (max-width:320px) {
+            .can {
+                position: absolute;
+                top: 50px;
+                left: 75%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="can" class="can" width="500" height="500"></canvas>
+</body>
+
+</html>
+<script>
+    //控制图片显示比例
+    let temp = 40
+    // 控制距离顶部高度
+    let height = 3
+    // 控制距离左侧宽度
+    let wedth = 2
+    let arr = [
+        './images/p1.jpg',
+        './images/p3.jpg',
+        './images/p4.jpg',
+        './images/p2.jpg',
+    ]
+    let c = document.querySelector('#can')
+    let cxt = c.getContext('2d')
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j <= i; j++) {
+            let url = arr[randomNum(0, arr.length - 1)]
+            create((i + wedth) * (temp + 2), (j + height + 2) * (temp + 2), temp, url)
+            url = arr[randomNum(0, arr.length - 1)]
+            create((wedth + 6 - i) * (temp + 2), (j + height + 2) * (temp + 2), temp, url)
+        }
+
+    }
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j <= i; j++) {
+            let url = arr[randomNum(0, arr.length - 1)]
+            create((j + wedth + 2) * (temp + 2), (i + height) * (temp + 2), temp, url)
+            url = arr[randomNum(0, arr.length - 1)]
+            create((wedth + 1 - j) * (temp + 2), (i + height) * (temp + 2), temp, url)
+            url = arr[randomNum(0, arr.length - 1)]
+            create((j + wedth + 5) * (temp + 2), (i + height) * (temp + 2), temp, url)
+            url = arr[randomNum(0, arr.length - 1)]
+            create((wedth + 4 - j) * (temp + 2), (i + height) * (temp + 2), temp, url)
+        }
+    }
+    function create(x, y, z, url) {
+        cxt.beginPath()
+        cxt.fillStyle = "#0000FF"
+        // cxt.fillRect(x,y,z,z)
+        var img = new Image()
+        img.src = url
+        //图片加载完后，将其显示在canvas中
+        img.onload = function () {
+            cxt.drawImage(this, x, y, z, z)
+            // context.drawImage(this, 0, 0, 1080, 980)改变图片大小到1080*980
+        }
+        cxt.closePath()
+    }
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+</script>
