@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+        }
+        .content{
+            margin: 50px auto;
+            width: 600px;
+            height: 500px;
+            /* border: 1px solid seagreen; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .group{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 55px;
+        }
+        .group>div{
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+        }
+        .group div img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+        </div>
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+        </div>
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            
+        </div>
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+        </div>
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+            <div><image src="images/aa.jpg"></image></div>
+        </div>
+        <div class="group">
+            <div><image src="images/aa.jpg"></image></div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let imgs=document.querySelectorAll('.group>div>img')
+    let arr = [
+        './images/p1.jpg',
+        './images/p3.jpg',
+        './images/p4.jpg',
+        './images/p2.jpg',
+    ]
+    for(let i =0;i<imgs.length;i++){
+        imgs[i].src=arr[randomNum(0, arr.length - 1)]
+    }
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+</script>
