@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="initial-scale=1.0">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.login{
+				width: 400px;
+				/* 水平居中方式一 */
+				/* margin: 0 auto; */
+				/* 水平居中方式二 */
+				position: absolute;
+				left: 50%;
+				transform:translateX(-50%);
+				padding-top: 50px;
+			}
+			@media all and (max-width:360px) {
+				.login{
+					width: 100%;
+					/* 水平居中方式一 */
+					/* margin: 0 auto; */
+					/* 水平居中方式二 */
+					position: absolute;
+					left: 50%;
+					transform:translateX(-50%);
+					padding-top: 50px;
+				}
+			}
+			
+			.login>header{
+				padding: 0 10% 0 10%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				
+			}
+			.login>header>h2{
+				display: inline-block;
+			}
+			.login>header>span{
+				display: inline-block;
+				height: 13px;
+				line-height: 13px;
+				font-size: 13px;
+			}
+			.login>.content{
+				margin-top: 25px;
+				padding: 0 10% 0 10%;
+			}
+			.login>.content>form{
+				width: 100%;
+			}
+			.login>.content>form>.form-group{
+				margin-top: 20px;
+			}
+			.login>.content>form>.form-group>label{
+				display: block;
+			}
+			.login>.content>form>.form-group>.input-group{
+				border: 1px solid rgb(254,115,0);
+				width: 100%;
+				height: 35px;
+				border-radius: 3px;
+			}
+			.login>.content>form>.form-group>.input-group>.account,.password{
+				width: 100%;
+				height:100%;
+				border: none;
+				/* border: 1px solid rgb(254,115,0); */
+			}
+			
+			.login>.content>form>.form-group>.submit{
+				width: 100%;
+				height: 35px;
+				background-color: rgb(254,115,0);
+				border: none;
+				border-radius: 5px;
+				font-size: 18px;
+				color: white;
+			}
+			.login>.content>form>.form-group>.toggle{
+				display: block;
+				width: 100%;
+				text-align: center;
+				text-decoration: none;
+			}
+			.login>.content>form>.form-group>.toggle:hover{
+				cursor: default;
+			}
+		
+			.phone{
+				width: 65%;
+				border-right: 1px solid rgb(254,115,0) ;
+			}
+			.send-code{
+				display: none;
+				width: 34%;
+				border: none;
+				height: 97%;
+				background-color: rgba(0,0,0,0);
+			}
+			.login>.content>form>.forget-pwd{
+				text-align: right;
+				margin-top: 0px;
+			}
+			.login>.content>form>.forget-pwd>a{
+				text-decoration: none;
+				font-size: 15px;
+				color: #000000;
+			}
+			.footer{
+				margin-top: 50px;
+				text-align: center;
+				width: 100%;
+			}
+			.footer>fieldset{
+				width: 100%;
+				border: none;
+				border-top: 1px black solid;
+			}
+			.footer>fieldset>legend{
+				text-align: center;
+			}
+			.footer div>a{
+				text-decoration: none;
+				margin-top: 4%;
+				margin-left: 8%;
+			}
+			.footer div>.icon-qq{
+				display: inline-block;
+				width: 31px;
+				height: 31px;
+				background: url(image/icon.png) no-repeat -20px -7px;
+			}
+			.footer div>.icon-WeiBo{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -84px -7px;
+			}
+			.footer div>.icon-Ali{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -148px -7px;
+			}
+			.footer div>.icon-WeiXin{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -212px -7px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login">
+			<header>
+				<h2>登录</h2>
+				<span>没有账号?<a href="#">立即注册</a></span>
+			</header>
+			<div class="content">
+				<form action="#">
+					<div class="form-group">
+						<label for="account" class="label-tip">手机/邮箱/个人空间地址</label>
+						<div class="input-group">
+							<input class="account" id="account" name="account" />
+						</div>
+					</div>
+					<div class="form-group input-group">
+						<label for="password" class="label-tip">密码</label>
+						<div class="input-group">
+							<input class="password " id="password" name="password" type="password" /><button type="button" class="send-code">发送验证码</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<button class="submit" type="submit">登　录</button>
+					</div>
+					<div class="form-group">
+						<a class="toggle">手机短信登录</a>
+					</div>
+					<div class="form-group forget-pwd">
+						<a href="#">忘记密码</a>
+					</div>
+				</form>
+				<div class="footer">
+					<fieldset>
+						<legend>其他方式登录</legend>
+						<div>
+							<a class="icon-qq"></a>
+							<a class="icon-WeiBo"></a>
+							<a class="icon-Ali"></a>
+							<a class="icon-WeiXin"></a>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	// 控制开关
+	let temp = 0
+	let toggle = document.querySelector('.toggle')
+	toggle.addEventListener('click', () => {
+		if (!temp) {
+			toggle.innerHTML = '用户密码登录'
+			document.querySelector('#password').className = 'password phone'
+			document.querySelector('.send-code').style.display = 'inline-block'
+			document.querySelectorAll('.label-tip')[0].innerHTML = "手机号码"
+			document.querySelectorAll('.label-tip')[1].innerHTML = "验证码"
+			temp = 1
+		} else {
+			toggle.innerHTML = '账号密码登录'
+			document.querySelector('#password').className = 'password'
+			document.querySelector('.send-code').style.display = 'none'
+			document.querySelectorAll('.label-tip')[0].innerHTML = "手机/邮箱/个人空间地址"
+			document.querySelectorAll('.label-tip')[1].innerHTML = "密码"
+			temp = 0
+		}
+	})
+</script>

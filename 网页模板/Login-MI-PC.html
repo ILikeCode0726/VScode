@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="initial-scale=1.0">
+		<title>Login</title>
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="fonts/glyphicons-halflings-regular.svg" />
+		<script src="js/jquery-3.5.1.js"></script>
+		<script src="js/popper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+
+			#login {
+				margin: 0 auto;
+				width: 410px;
+				height: 556px;
+				/* background-color: #0000FF; */
+			}
+
+			#login>.title {
+				text-align: center;
+				font-size: 24px;
+				width: 100%;
+				padding-top: 6%;
+				height: 15%;
+			}
+
+			#login>.title>a {
+				display: inline-block;
+				width: 96px;
+				height: 27px;
+				line-height: 27px;
+				font-size: 24px;
+				
+				text-decoration: none;
+			}
+			#login>.title>a:nth-child(1){
+				color: #f56600;
+			}
+			#login>.title>a:nth-child(3){
+				color: #666;
+			}
+			#login>.title>.line {
+				width: 1px;
+				height: 24px;
+				margin: 0 35px 0 42px;
+				border: 1px solid #e0e0e0;
+				display: inline-block;
+			}
+			#login>.content{
+				text-align: center;
+				/* display: none; */
+			}
+			#login>.content>form>.form-group{
+				/* margin-left: 10%; */
+				margin-right: 0;
+				text-align: center;
+			}
+			.form-control-lg{
+				border-width: 1px;
+				border-color:rgb(#E0E0E0) ;
+				width: 80%;
+			}
+			#submit{
+				width: 80%;
+				margin-top: 2%;
+				background-color: #ff6700;
+			}
+			.btn{
+				border: none;
+			}
+			#phone{
+				box-shadow: none;
+			}
+			.logon>a{
+				text-decoration: none;
+				display: inline-block;
+				font-size: 15px;
+				width: 70px;
+				height: 16px;
+				line-height: 16px;
+				color: #757575;
+			}
+			.logon>a+span{
+				display: inline-block;
+				height: 16px;
+				border-left: 1px #757575 solid;
+				border-right: 1px #757575 solid;
+				position: relative;
+				top: 2px;
+			}
+			.others{
+				width: 100%;
+				text-align: center;
+				margin-top: 20%;
+			}
+			.other{
+				width:80%;
+				margin-left: 10%;
+				border-top:1px solid rgb(224,224,224);
+			}
+			.other>legend{
+				color: #bbb;
+				font-size: 14px;
+				width: 6.25rem;
+			}
+			.other>.icon-qq{
+				display: inline-block;
+				width: 31px;
+				height: 31px;
+				background: url(image/icon.png) no-repeat -20px -7px;
+			}
+			.other>.icon-WeiBo{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -84px -7px;
+			}
+			.other>.icon-Ali{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -148px -7px;
+			}
+			.other>.icon-WeiXin{
+				display: inline-block;
+				width: 1.875rem;
+				height: 1.875rem;
+				background: url(image/icon.png) no-repeat -212px -7px;
+			}
+			.other>a{
+				margin-left: 4%;
+				margin-right: 4%;
+			}
+			
+			.content1{
+				display: none;
+				width: 100%;
+				text-align: center;
+				
+			}
+			.content1>div{
+				margin-top: 20%;
+				margin-bottom: 5%;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header></header>
+		<div>
+			<div id="login">
+				<div class="title">
+					<a href="#">账号登录</a>
+					<span class="line"></span>
+					<a href="#">扫码登录</a>
+				</div>
+				<div class="content container">
+					<form action="#" method="" class="form">
+						<div class="form-group">
+							<input type="text" placeholder="邮箱/手机号码/小米ID" class="form-control-lg" name="account" />
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="密码" class="form-control-lg" name="password" />
+						</div>
+						<div class="form-group">
+							<button type="submit" id="submit" class="btn btn-primary btn-lg">登录</button>
+						</div>
+						<div class="form-group">
+							<a href="#" class="btn" id="phone" style="color: #ff6700;">手机短信登录注册</a>
+						</div>
+						<div class="form-group logon">
+							<a href="#">立即注册</a>
+							<span></span>
+							<a href="#">忘记密码?</a>
+						</div>
+						<div class=" others">
+							<fieldset class="other" align="center">
+								<legend align="center">其他方式登录</legend>
+								<a class="icon-qq"></a>
+								<a class="icon-WeiBo"></a>
+								<a class="icon-Ali"></a>
+								<a class="icon-WeiXin"></a>
+							</fieldset>
+							<!-- <fieldset style="width:300;height:150;border:1px dashed red" align="center">
+							   <legend style="width:100px;">
+							      1234
+							   </legend>
+							</fieldset> -->
+						</div>
+					</form>
+				</div>
+				<div class="content1">
+					<div><span>请使用手机扫码登录</span></div>
+					<img src="image/二维码.png" >
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	let as=document.querySelectorAll('#login>.title>a')
+	as[0].addEventListener('click',()=>{
+		as[0].style.color='#f56600';
+		as[1].style.color='#666';
+		document.querySelector('.content').style.display='block'
+		document.querySelector('.content1').style.display='none'
+	})
+	as[1].addEventListener('click',()=>{
+		as[1].style.color='#f56600';
+		as[0].style.color='#666';
+		document.querySelector('.content1').style.display='block'
+		document.querySelector('.content').style.display='none'
+	})
+</script>

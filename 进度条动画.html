@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 400px;
+            margin: 0 auto;
+        }
+        @media all and (min-width:768px) {
+            .container{
+                margin-top: 100px;
+            }
+        }
+        @media all and (max-width:765px) and (min-width:480px) {
+            .container{
+                margin-top: 60px;
+            }
+        }
+        @media all and (max-width:479px) {
+            .container{
+                margin-top: 30px;
+            }
+        }
+        
+        .update{
+            width: 380px;
+            margin: 30px 0 5px 30px;
+        }
+        .input{
+            width: 250px;
+            display: inline-block;
+            height: 36px;
+            outline: none;
+            border: 2px solid rgb(196,199,206);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            font-size: 18px;
+            padding-left: 5px;
+        }
+        .input:hover{
+            border: 2px solid rgb(167,170,181);
+            border-right: none;
+        }
+        .input:focus{
+            border: 2px solid rgb(78,110,242);
+            border-right: none;
+        }
+        #btn{
+            color: white;
+            display: inline-block;
+            height: 40px;
+            vertical-align: top;
+            background-color: rgb(78,110,242);
+            border-radius:  0 8px 8px 0;
+            width: 80px;
+            text-align: center;
+            line-height: 38px;
+        }
+        #btn:hover{
+            cursor: pointer;
+        }
+        
+        
+        .group{
+            width: 350px;
+            height: 100px;
+            /* background-color: #00FF00; */
+            float: left;
+            position: relative;
+            margin: 20px 0 0 40px;
+            
+            /* 元素水平垂直居中方法三 */
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; */
+        }
+        .group ul li{
+            list-style: none;
+            margin-top: 10px;
+            overflow: hidden;
+            /* text-align: center; */
+        }
+        .group>span{
+            display: inline-block;
+        }
+        .group>span:nth-child(1){
+            float: left;
+        }
+        .group .progress{
+            /* display: inline-block; */
+            width: 200px;
+            height: 20px;
+            border: #000000 1px solid;
+            border-radius: 10px;
+            /* position: absolute; */
+            
+            /* 水平垂直居中方法一 */
+            /* top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto; */
+            
+            /* 水平垂直居中方法二 */
+            /* top: 50%;
+            right: 50%;
+            transform: translate(50%,-50%); */
+            /* transform: translateY(-50%) translateX(50%); */
+            
+            
+        }
+        
+        .pro{
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+            width: 180px;
+            height: 100%;
+            background-color: red;
+            animation: ease-out 6s p1;
+            /* font-size: 1px; */
+        }
+        @keyframes p1{
+            0%{
+                width: 0px;
+            }
+            100%{
+                width: 180px;
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="update">
+            <input type="text" placeholder="请输入数字,值在0到100之间" class="input" /><span id="btn">修改进度</span>
+        </div>
+        <div class="group">
+            <ul>
+                <li><span>进度条</span></li>
+                <li class="progress">
+                    <span class="pro"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+var style = document.styleSheets[0];
+document.querySelector('#btn').onclick = () => {
+    // 存储进度
+    let temp=document.querySelector('.input').value
+    temp=temp*2
+    console.log(temp)
+    document.querySelector('.pro').style.width = temp+'px'
+    document.querySelector('.pro').style.animation = "ease-out 6s pp"+temp;
+    style.deleteRule(7)
+    style.insertRule("@keyframes pp"+temp+"{0%{width: 0px;}100%{width: "+temp+"px;}}", 7); //写入样式
+    console.log(style)
+}
+</script>

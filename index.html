@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Show</title>
+    <script src="./bootstrap/jquery-3.5.1.js"></script>
+    <script src="./bootstrap/popper.min.js"></script>
+    <script src="./bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            text-align: center;
+        }
+        .container>.row{
+            margin: 40px 0 0 0;
+        }
+        .container>.row>.col-4>.content{
+            width: 90%;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(94, 255, 0);
+            
+        }
+        .container>.row>.col-4>.content:hover{
+            box-shadow: 0 0 10px 5px red,0 0 10px 10px blue;
+            transform: scale(1.1);
+            animation: linear 2s a1;
+        }
+        .container>.row>.col-4>.content>a{
+           text-decoration: none;
+        }
+        .container>.row>.col-4>.content>img{
+            width: 80%;
+            height: 70%;
+            margin: 0 0 40px 0;
+        }
+        .container>.row>.col-4>.content>img:hover{
+            cursor: pointer;
+        }
+
+        .foot{
+            position: absolute;
+            bottom: calc(8vh);
+            text-align: center;
+            width: 100%;
+        }
+
+        @keyframes a1{
+            0%{
+                transform: scale(1);
+                box-shadow:none;
+            }
+            100%{
+                transform: scale(1.1);
+                box-shadow: 0 0 10px 5px red,0 0 10px 10px blue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <h1>我的个人网页</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/哔哩哔哩手机登录界面.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">哔哩哔哩手机登录界面</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/小米登录PC版.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">小米登录界面PC版</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/手机登录-码云.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">码云手机登录界面</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/爱心canvas.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">canvas爱心</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/爱心div.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">div爱心</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="content">
+                    <img class="img" src="./picture/22.jpg" alt="图片正在拼了命的加载中" >
+                    <a href="">网站一</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <span>蒲磊的个人网页，版权所有</span>
+    </div>
+</body>
+
+</html>
+<script>
+    let imgs=document.querySelectorAll('.img')
+    for(let i=0;i<imgs.length;i++){
+        imgs[i].onclick=()=>{
+            // 获取与之对应的a标签
+            let a=imgs[i].parentNode.querySelector('a')
+            location.href=a.href
+        }
+    }
+    
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #bg{
+            position: absolute;
+            z-index: -2;
+        }
+        #canvas {
+           background: cadetblue;
+        }
+        .contaior{
+            width: 80%;
+            height: calc(100vh);
+            background: white;
+            margin: 0 auto;
+        }
+        .tips{
+            position: absolute;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            visibility: hidden;
+            /* animation:  ease-in 2s pp; */
+        }
+        .tips:hover{
+            cursor:default;
+        }
+        .tips>span:hover{
+            cursor:default;
+        }
+         @keyframes pp10 {   }
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <canvas id="canvas"></canvas>
+    </div>
+    <div class="contaior">
+        <button id="btn">测试</button>
+        <div class="tips">
+            <span>你好啊</span>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let html= document.querySelector('html')
+    let canvas = document.querySelector('#canvas')
+    canvas.width = innerWidth
+    canvas.height = html.offsetHeight
+    let cxt = canvas.getContext('2d')
+
+    let n = innerWidth / 5
+    let speed = 1
+    let length = 10
+    let coordinate_x = 20
+    let color = 'red'
+    let arr = []
+
+    for (let i = 0; i < n; i++) {
+        speed = randomNum(1, 5)
+        length = randomNum(5, 25)
+        coordinate_x = randomNum(0, innerWidth)
+        color = 'rgb(' + randomNum(0, 255) + ',' + randomNum(0, 255) + ',' + randomNum(0, 255) + ')'
+        arr.push({
+            x: coordinate_x,
+            y:Math.round(Math.random()*canvas.height),
+            // y: -length,
+            width:2,
+            length: length,
+            speed: speed,
+            color: color
+        })
+    }
+
+
+
+    function drow() {
+
+        cxt.clearRect(0, 0, canvas.width, canvas.height )
+
+        for (let i = 0; i < n; i++) {
+            
+            cxt.beginPath()
+            cxt.fillStyle = arr[i].color
+            cxt.fillRect(arr[i].x, arr[i].y, arr[i].width, arr[i].length)
+            cxt.closePath()
+            arr[i].y = arr[i].y + arr[i].speed
+            if(arr[i].y>canvas.height){
+                arr[i].y=-arr[i].length
+            }
+        }
+        requestAnimationFrame(drow);
+
+    }
+
+    drow()
+
+
+
+    //生成从minNum到maxNum的随机数
+    function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+                break;
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    let btn=document.querySelector('#btn').onclick=()=>{
+        console.log('点击了')
+    }
+    let tips=document.querySelector('.tips')
+    var style = document.styleSheets[0];
+    document.addEventListener('click',(event)=>{
+        // 设置随机数，方便动画名字使用
+        let r=randomNum(1, 10)
+        tips.style.animation = "ease-in 0.5s pp"+r;//设置动画
+        tips.style.color='rgb(' + randomNum(0, 255) + ',' + randomNum(0, 255) + ',' + randomNum(0, 255) + ')'
+        
+        style.deleteRule(5)//删除已有的关键帧
+        // style.insertRule(`@keyframes pp${r}{   0% { top: ${event.clientY}px;opacity:1;}  100% { top: ${event.clientY-60}px;opacity:0;}}`, 5); //写入样式
+        style.insertRule(`@keyframes pp${r}{   0% { top: ${event.clientY}px;left:${event.clientX}px;visibility:visible}  100% { top: ${event.clientY-60}px;left:${event.clientX}px;visibility: hidden;}}`, 5); //写入样式
+        event.stopPropagation()
+    },false)
+
+
+</script>
