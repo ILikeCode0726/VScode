@@ -14,14 +14,18 @@
             margin: 0;
             padding: 0;
         }
-
+        .seize_a_seat{
+            display: none;
+        }
         .head {
             text-align: center;
         }
-        .container>.row{
+
+        .container>.row {
             margin: 40px 0 0 0;
         }
-        .container>.row>.col-4>.content{
+
+        .container>.row>.col-4>.content {
             width: 90%;
             height: 300px;
             padding: 15px 0;
@@ -30,39 +34,86 @@
             justify-content: center;
             align-items: center;
             border: 2px solid rgb(94, 255, 0);
-            
+
         }
-        .container>.row>.col-4>.content:hover{
-            box-shadow: 0 0 10px 5px red,0 0 10px 10px blue;
+
+        .container>.row>.col-4>.content:hover {
+            box-shadow: 0 0 10px 5px red, 0 0 10px 10px blue;
             transform: scale(1.1);
             animation: linear 2s a1;
         }
-        .container>.row>.col-4>.content>a{
-           text-decoration: none;
+
+        .container>.row>.col-4>.content>a {
+            text-decoration: none;
         }
-        .container>.row>.col-4>.content>img{
+
+        .container>.row>.col-4>.content>img {
             width: 80%;
             height: 70%;
             margin: 0 0 40px 0;
         }
-        .container>.row>.col-4>.content>img:hover{
+
+        .container>.row>.col-4>.content>img:hover {
             cursor: pointer;
         }
 
-        .foot{
-            margin: 40px 0 ;
+        .foot {
+            margin: 40px 0;
             text-align: center;
             width: 100%;
         }
 
-        @keyframes a1{
-            0%{
-                transform: scale(1);
-                box-shadow:none;
+        @media all and (max-width: 768px) and (min-width: 321px){
+            .seize_a_seat{
+                display: block;
             }
-            100%{
+            .container>.row{
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+            }
+            .container>.row>.col-4{
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin: 40px 0 0 0;
+            }
+            /* 选择偶数行单独设置 */
+            .container>.row:nth-of-type(even){
+                flex-direction:row-reverse;
+                position: relative;
+                top: -340px;
+            }
+            .container>.row>.col-4>.content{
+                margin: 0 auto;
+            }
+        }
+
+        @media all and (max-width: 320px) {
+            .container>.row{
+                display: flex;
+                flex-direction: column;
+                margin: 0 0 0 0;
+                
+            }
+            .container>.row>.col-4{
+                flex: 0 0 1;
+                max-width: none;
+                margin: 40px 0 0 0;
+            }
+            .container>.row>.col-4>.content{
+                margin: 0 auto;
+            }
+        }
+
+        @keyframes a1 {
+            0% {
+                transform: scale(1);
+                box-shadow: none;
+            }
+
+            100% {
                 transform: scale(1.1);
-                box-shadow: 0 0 10px 5px red,0 0 10px 10px blue;
+                box-shadow: 0 0 10px 5px red, 0 0 10px 10px blue;
             }
         }
     </style>
@@ -76,19 +127,19 @@
         <div class="row">
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/哔哩哔哩手机登录界面.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/哔哩哔哩手机登录界面.jpg" alt="图片正在拼了命的加载中">
                     <a href="">哔哩哔哩手机登录界面</a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/小米登录PC版.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/小米登录PC版.jpg" alt="图片正在拼了命的加载中">
                     <a href="">小米登录界面PC版</a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/手机登录-码云.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/手机登录-码云.jpg" alt="图片正在拼了命的加载中">
                     <a href="">码云手机登录界面</a>
                 </div>
             </div>
@@ -96,38 +147,45 @@
         <div class="row">
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/爱心canvas.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/爱心canvas.jpg" alt="图片正在拼了命的加载中">
                     <a href="">canvas爱心</a>
                 </div>
             </div>
+            <!-- 占位盒子，所有双数div必须加 -->
+            <div class="seize_a_seat col-4">
+
+            </div>
+
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/爱心div.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/爱心div.jpg" alt="图片正在拼了命的加载中">
                     <a href="">div爱心</a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/图书管理系统.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/图书管理系统.jpg" alt="图片正在拼了命的加载中">
                     <a href="http://www.sanshidaren.cn:9900/">图书管理系统</a>
                 </div>
             </div>
+            
         </div>
         <div class="row">
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/背景+点击特效.jpg" alt="图片正在拼了命的加载中" >
+                    <img class="img" src="./picture/背景+点击特效.jpg" alt="图片正在拼了命的加载中">
                     <a href="https://ilikecode0726.github.io/VScode/%E8%83%8C%E6%99%AF%E7%89%B9%E6%95%88">背景+点击特效</a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="content">
-                    <img class="img" src="./picture/进度条动画.jpg" alt="图片正在拼了命的加载中" >
-                    <a href="https://ilikecode0726.github.io/VScode/%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%8A%A8%E7%94%BB">进度条动画</a>
+                    <img class="img" src="./picture/进度条动画.jpg" alt="图片正在拼了命的加载中">
+                    <a
+                        href="https://ilikecode0726.github.io/VScode/%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%8A%A8%E7%94%BB">进度条动画</a>
                 </div>
             </div>
             <div class="col-4">
-                
+
             </div>
         </div>
     </div>
@@ -138,13 +196,13 @@
 
 </html>
 <script>
-    let imgs=document.querySelectorAll('.img')
-    for(let i=0;i<imgs.length;i++){
-        imgs[i].onclick=()=>{
+    let imgs = document.querySelectorAll('.img')
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = () => {
             // 获取与之对应的a标签
-            let a=imgs[i].parentNode.querySelector('a')
-            location.href=a.href
+            let a = imgs[i].parentNode.querySelector('a')
+            location.href = a.href
         }
     }
-    
+
 </script>
