@@ -17,6 +17,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
+
         @media all and (max-width:480px) and (min-width: 321px) {
             .can {
                 position: absolute;
@@ -24,11 +25,12 @@
                 left: 55%;
             }
         }
+
         @media all and (max-width:320px) {
             .can {
                 position: absolute;
                 top: 50px;
-                left: 55%;
+                left: 60%;
             }
         }
     </style>
@@ -40,6 +42,7 @@
 
 </html>
 <script>
+
     //控制图片显示比例
     let temp = 40
     // 控制距离顶部高度
@@ -47,10 +50,10 @@
     // 控制距离左侧宽度
     let wedth = 2
     let arr = [
-        './images/p1_Compress.jpg',
-        './images/p3_Compress.jpg',
-        './images/p4_Compress.jpg',
-        './images/p2_Compress.jpg',
+        './images/aa.jpg',
+        './images/bb.jpg',
+        './images/cc.jpg',
+        './images/cc.jpg',
     ]
     let c = document.querySelector('#can')
     let cxt = c.getContext('2d')
